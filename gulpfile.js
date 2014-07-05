@@ -112,7 +112,8 @@ gulp.task('html', function () {
 
 // Clean Output Directory
 gulp.task('clean', function (cb) {
-  rimraf('dist', rimraf.bind({}, '.tmp', cb));
+    return gulp.src(['dist/*', '!dist/{.git,.git/**,README.md}'])
+      .pipe($.clean());
 });
 
 // Watch Files For Changes & Reload
